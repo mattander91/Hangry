@@ -33,7 +33,7 @@ class Search extends React.Component {
       query: this.state.currFoodSearched,
       location: this.state.currLocationSearched
     };
-    let url = 'http://127.0.0.1:3000/api/search' || process.env.url + '/api/search'
+    let url = process.env.url + '/api/search' || 'http://127.0.0.1:3000/api/search';
     if (userQuery.query.length > 0 && userQuery.location.length > 0) {
       this.handleSpinner();
       $.ajax({
