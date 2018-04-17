@@ -34,6 +34,7 @@ class Search extends React.Component {
       location: this.state.currLocationSearched
     };
     let url = process.env.url + '/api/search' || 'http://127.0.0.1:3000/api/search';
+    console.log('url: ', url);
     if (userQuery.query.length > 0 && userQuery.location.length > 0) {
       this.handleSpinner();
       $.ajax({
