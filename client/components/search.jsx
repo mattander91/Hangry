@@ -46,7 +46,7 @@ class Search extends React.Component {
           this.props.searchedResults(data.slice(0, 20));
         },
         error: () => {
-          console.log('GET has failed');
+          console.log('GET has failed. URL: ', url);
         }
       });
     }
