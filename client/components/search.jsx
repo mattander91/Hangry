@@ -26,17 +26,19 @@ class Search extends React.Component {
     });
   }
 
+  //send submit request to server
   handleSubmit(e) {
     e.preventDefault();
     let userQuery = {
       query: this.state.currFoodSearched,
       location: this.state.currLocationSearched
     };
+    let url = 'http://127.0.0.1:3000/api/search' || process.env.url + '/api/search'
     if (userQuery.query.length > 0 && userQuery.location.length > 0) {
       this.handleSpinner();
       $.ajax({
         type: 'POST',
-        url: 'http://127.0.0.1:3000/api/search',
+        url: url,
         data: userQuery,
         success: (data) => {
           this.handleSpinner();
@@ -49,6 +51,7 @@ class Search extends React.Component {
     }
   }
 
+  //Show/hide 'spinner' loading gif
   handleSpinner() {
     this.setState({showSpinner: !this.state.showSpinner});
   }

@@ -12,6 +12,8 @@ class Result extends React.Component {
     this.formatPrice = this.formatPrice.bind(this);
   }
 
+
+  //reformat hours to array format
   formatHours(hours) {
     let formattedHours = [];
     for (var key in hours) {
@@ -20,6 +22,8 @@ class Result extends React.Component {
     return formattedHours;
   }
 
+
+  //Add zero(s) if price doesn't include change or change is divisible by 10
   formatPrice(price) {
     price = price.toString();
     if (!price.includes('.')) {

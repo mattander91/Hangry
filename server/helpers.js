@@ -18,6 +18,7 @@ let getRestaurants = (location, searchedFood, callback) => {
   });
 };
 
+//Standardizes search string to uppercased first letters to match API format
 let formatSearch = (arr) => {
   let modified = [];
   let filterFood = arr.filter((word) => {
@@ -31,8 +32,9 @@ let formatSearch = (arr) => {
   return modified;
 };
 
-//Takes body response from getRestaurants and filters restaurant name, location, apiKey (unique restraurant ID), and restaurant address
-//Returns restaurants that serve food types relevant to user's search
+//Takes body response from getRestaurants and filters restaurant name,
+//  location, apiKey (unique restraurant ID), and restaurant address
+//Returns restaurants that serve food types relevant to user's search for getRestaurants function
 let relevantRestaurants = (body, searchedFood, callback) => {
   let res = JSON.parse(body);
   let restaurants = res.restaurants;
@@ -90,7 +92,8 @@ let getRelevantMenuItems = (restaurantId, searchedFood, callback) => {
 
 //Adds "relevance" property to menu items
 //Only menu items with exact matches are returned
-//ex - search for "Pepperoni Pizza" will only return menu item names or item descriptions that include words "Pepperoni" and "Pizza"
+//ex - search for "Pepperoni Pizza" will only return menu item names or
+// item descriptions that include words "Pepperoni" and "Pizza"
 let addItemRelevance = (res, splitFood, callback) => {
   let relevantItems = [];
   res.forEach(menu => {
@@ -148,7 +151,7 @@ let formatMenu = (restaurantId, foodType, callback) => {
   });
 };
 
-//Returns all relevant restaurants' menu items
+//Returns all relevant restaurants' menu items, not grouped by restaurant name
 let menusByCity = (cityName, searched, callback) => {
   let menus = [];
   getRestaurants(cityName, searched, (restaurants) => {
@@ -169,6 +172,7 @@ let menusByCity = (cityName, searched, callback) => {
 };
 
 //Calls all functions above to retrieve all relevant menu items within 10 miles of provided location/city.
+//Groups all menu item names by restaurant
 let groupByRestaurant = (cityName, searched, callback) => {
   menusByCity(cityName, searched, (menus) => {
     if (menus) {

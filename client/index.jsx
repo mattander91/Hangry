@@ -23,6 +23,7 @@ class App extends React.Component {
     });
   }
 
+  //Handle 'About' click on Home page
   aboutClick() {
     this.setState({currentState: 'About'});
   }
