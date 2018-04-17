@@ -33,8 +33,7 @@ class Search extends React.Component {
       query: this.state.currFoodSearched,
       location: this.state.currLocationSearched
     };
-    let url = process.env.url + '/api/search' || 'http://127.0.0.1:3000/api/search';
-    console.log('url: ', url);
+    let url = 'https://hangry2.herokuapp.com/api/search' || 'http://127.0.0.1:3000/api/search';
     if (userQuery.query.length > 0 && userQuery.location.length > 0) {
       this.handleSpinner();
       $.ajax({
@@ -46,7 +45,7 @@ class Search extends React.Component {
           this.props.searchedResults(data.slice(0, 20));
         },
         error: () => {
-          console.log('GET has failed. URL: ', url);
+          // console.log('GET has failed');
         }
       });
     }
@@ -68,7 +67,7 @@ class Search extends React.Component {
             this.handleSubmit(e);
             document.getElementById("search-boxes").reset();}}>
             <div>
-              <input className="mb-2 mr-sm-2 mb-sm-0" type="text" placeholder='Search Food ("chicken wings", etc)...' onChange={(e) => {
+              <input className="mb-2 mr-sm-2 mb-sm-0" type="text" placeholder='Search Food...' onChange={(e) => {
                 this.handleFoodUserSearch(e)}}/>
             </div>
             <div>
