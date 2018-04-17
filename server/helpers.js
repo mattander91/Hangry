@@ -6,7 +6,7 @@ let getRestaurants = (location, searchedFood, callback) => {
   let matched = searchedFood.match(exp).join('').split(' ');
   let modifiedSearch = formatSearch(matched);
   let query = {
-    headers: {'X-Access-Token': '8f27d842845c73da'},
+    headers: {'X-Access-Token': process.env.key},
     url: 'https://api.eatstreet.com/publicapi/v1/restaurant/search?method=pickup&pickup-radius=10&street-address=' + location
   };
   request.get(query, (error, response, body) => {
@@ -64,7 +64,7 @@ let relevantRestaurants = (body, searchedFood, callback) => {
 //Calls "Restaurant Menu" endpoint: https://developers.eatstreet.com/endpoint/restaurant-menu
 let getRelevantMenuItems = (restaurantId, searchedFood, callback) => {
   let query = {
-    headers: {'X-Access-Token': '8f27d842845c73da'},
+    headers: {'X-Access-Token': process.env.key},
     url: 'https://api.eatstreet.com/publicapi/v1/restaurant/' + restaurantId + '/menu'
   };
   request.get(query, (error, response, body) => {

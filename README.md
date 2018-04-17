@@ -16,6 +16,9 @@
   Enter desired food item and location in appropriate inputs and press "Enter" or click the "search" button.
   Click restaurant name buttons for restaurant info
 
+#API Resources
+  https://developers.eatstreet.com/
+
 #Credits
   Vitor Pereira: https://github.com/vpereira1982
   Lichin Shao: https://github.com/lichinshao
