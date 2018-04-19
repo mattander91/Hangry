@@ -61,7 +61,6 @@ let relevantRestaurants = (body, searchedFood, callback) => {
   return namesAndKeys;
 };
 
-
 //Gets menu items from relevant restaurants
 //Calls "Restaurant Menu" endpoint: https://developers.eatstreet.com/endpoint/restaurant-menu
 let getRelevantMenuItems = (restaurantId, searchedFood, callback) => {
@@ -117,7 +116,6 @@ let addItemRelevance = (res, splitFood, callback) => {
     callback(filterUniqueItems(relevantItems));
   }
 };
-
 
 //EatStreet occasionally has duplicate menu items listed, this function returns only unique item names.
 let filterUniqueItems = (items) => {

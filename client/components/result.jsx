@@ -12,7 +12,6 @@ class Result extends React.Component {
     this.formatPrice = this.formatPrice.bind(this);
   }
 
-
   //reformat hours to array format
   formatHours(hours) {
     let formattedHours = [];
@@ -21,7 +20,6 @@ class Result extends React.Component {
     }
     return formattedHours;
   }
-
 
   //Add zero(s) if price doesn't include change or change is divisible by 10
   formatPrice(price) {
@@ -40,15 +38,13 @@ class Result extends React.Component {
   render() {
     let addressLink = '';
     this.props.result.address
-      ?
-        addressLink = 'https://www.google.com/maps/place/' + this.props.result.address.split(/[ +]+/).join('+')
+      ? addressLink = 'https://www.google.com/maps/place/' + this.props.result.address.split(/[ +]+/).join('+')
       : null
     let hours = this.formatHours(this.props.result.hours);
     return (
       <div>
        {!this.props.result.noData
-        ?
-          <div id="restaurant" className="jumbotron Col xs={12} md={6}">
+        ? <div id="restaurant" className="jumbotron Col xs={12} md={6}">
             <div className="row card-block card">
               <div className="col col-md-12 text-center">
                 <img className="rounded float-left" src={this.props.result.logo}></img>
@@ -57,10 +53,7 @@ class Result extends React.Component {
                     {this.props.result.items[0].item}<span className="price">{'$' + this.formatPrice(this.props.result.items[0].price)}</span>
                   </p>
                   {this.props.result.items[0].description.length > 0
-                    ?
-                      <div className="description">
-                        <i>{this.props.result.items[0].description}</i>
-                      </div>
+                    ? <div className="description"><i>{this.props.result.items[0].description}</i></div>
                     : null
                   }
                   {this.props.result.items.length - 1 > 0
@@ -78,7 +71,7 @@ class Result extends React.Component {
                         <div className="lead">
                           <p className="main-item">{item.item}<span className="price">{'$' + this.formatPrice(item.price)}</span></p>
                           <p style={{maxWidth: item.description.length > 100 ? '80%' : '100%' }}><i>{item.description}</i></p>
-                      </div>
+                        </div>
                       )
                     })
                   : null
@@ -88,8 +81,7 @@ class Result extends React.Component {
                 </div>
                 <div className="restaurant-info">
                   {this.state.showInfo
-                    ?
-                      <div>
+                    ? <div>
                         <div className="info-left">
                           <p><span className="info">Address: </span><a href={addressLink} target="_blank">{this.props.result.address}</a></p>
                           <p><span className="info">Open: </span>{this.props.result.open ? 'Yes' : 'No'}</p>
